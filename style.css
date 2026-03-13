@@ -302,8 +302,7 @@ body {
 .screenshot-card {
     flex-shrink: 0;
     scroll-snap-align: center;
-    width: 500px;
-    aspect-ratio: auto;
+    height: 340px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -315,9 +314,8 @@ body {
 }
 
 .screenshot-card img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    width: auto;
     display: block;
 }
 
@@ -448,6 +446,6 @@ footer {
     }
 
     .screenshot-card {
-        width: 85vw;
+        height: 240px;
     }
 }
