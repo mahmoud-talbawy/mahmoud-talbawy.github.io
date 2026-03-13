@@ -363,6 +363,11 @@ footer {
     font-size: 0.8rem;
 }
 
+/* Hide mobile-3d-slot on desktop */
+#mobile-3d-slot {
+    display: none;
+}
+
 /* ---------- Scroll reveal animation ---------- */
 .feature-card,
 .rule,
@@ -621,7 +626,3 @@ footer {
     }
 }
 
-/* Hide mobile-3d-slot on desktop */
-#mobile-3d-slot {
-    display: none;
-}
