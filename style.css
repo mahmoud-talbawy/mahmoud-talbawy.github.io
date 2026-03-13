@@ -287,7 +287,7 @@ body {
 
 .screenshots-track {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     overflow-x: auto;
     padding: 20px 0;
     scroll-snap-type: x mandatory;
@@ -302,7 +302,8 @@ body {
 .screenshot-card {
     flex-shrink: 0;
     scroll-snap-align: center;
-    width: 280px;
+    width: 500px;
+    aspect-ratio: 16 / 9;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -447,6 +448,6 @@ footer {
     }
 
     .screenshot-card {
-        width: 220px;
+        width: 340px;
     }
 }
