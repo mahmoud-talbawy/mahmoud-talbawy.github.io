@@ -60,15 +60,27 @@ function initParticles() {
    2. THREE.JS 3D MODEL + SCROLL ANIMATION
    ============================================ */
 function init3DModel() {
-    const container = document.getElementById('model-container');
+    const isMobile = window.innerWidth <= 640;
+    const mobileSlot = document.getElementById('mobile-3d-slot');
+    const desktopContainer = document.getElementById('model-container');
+
+    // On mobile: move canvas into the inline hero slot
+    let container;
     const canvas = document.getElementById('three-canvas');
+    if (isMobile && mobileSlot) {
+        mobileSlot.appendChild(canvas);
+        container = mobileSlot;
+        desktopContainer.style.display = 'none';
+    } else {
+        container = desktopContainer;
+    }
 
     // Scene
     const scene = new THREE.Scene();
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(0, 1.5, 4);
+    camera.position.set(0, isMobile ? 1.2 : 1.5, isMobile ? 3.2 : 4);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({

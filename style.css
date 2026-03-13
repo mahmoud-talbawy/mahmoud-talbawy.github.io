@@ -395,121 +395,233 @@ footer {
     }
 }
 
-/* Mobile */
+/* ============================================
+   MOBILE — Dedicated Design (≤ 640px)
+   ============================================ */
 @media (max-width: 640px) {
+
+    /* --- Hide fixed 3D, use inline slot instead --- */
     #model-container {
-        position: fixed;
-        top: auto;
-        bottom: 0;
-        right: 0;
-        width: 100vw;
-        height: 30vh;
-        opacity: 0.15;
-        z-index: 0;
+        display: none !important;
     }
 
+    #mobile-3d-slot {
+        display: block;
+        width: 100%;
+        height: 280px;
+        margin: 20px 0 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+    }
+
+    /* --- Sections --- */
     .section {
-        padding: 40px 6%;
+        padding: 48px 7%;
         min-height: auto !important;
         justify-content: flex-start;
     }
 
-    #hero {
-        min-height: 85vh;
-        padding-top: 15vh;
-    }
-
-    #features,
-    #how-to-play {
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-
     .section-title {
-        margin-bottom: 28px;
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+    }
+
+    /* --- Hero: centered, title → 3D → tagline → CTA --- */
+    #hero {
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-title {
+        margin-bottom: 0;
     }
 
     .title-main {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
+        letter-spacing: 2px;
     }
 
     .title-sub {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+        letter-spacing: 4px;
+    }
+
+    .title-3d {
+        font-size: 1rem;
+        padding: 3px 12px;
+        margin-top: 6px;
     }
 
     .tagline {
-        margin-bottom: 28px;
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        padding: 0 10px;
     }
 
     .cta-button {
-        padding: 14px 24px;
+        padding: 14px 28px;
         font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+        max-width: 300px;
+    }
+
+    /* --- Features: horizontal scroll cards --- */
+    #features {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #features .section-title {
+        padding: 0 7%;
     }
 
     .features-grid {
-        gap: 16px;
+        display: flex !important;
+        grid-template-columns: unset;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0 7%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .features-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .feature-card {
-        padding: 24px 18px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        width: 260px;
+        padding: 28px 22px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     .feature-icon {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
     }
 
     .feature-card h3 {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        margin-bottom: 8px;
     }
 
     .feature-card p {
         font-size: 0.85rem;
+        line-height: 1.5;
     }
 
+    /* --- How to Play: compact rules --- */
     .rules-container {
-        gap: 16px;
+        gap: 14px;
     }
 
     .rule {
         padding: 18px;
         gap: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
     }
 
     .rule-number {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
     }
 
     .rule p {
         font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* --- Screenshots: full-width swipe --- */
+    #screenshots {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    #screenshots .section-title {
+        padding: 0 7%;
+    }
+
+    .screenshots-track {
+        padding: 10px 7%;
+        gap: 14px;
     }
 
     .screenshot-card {
-        height: 220px;
+        height: 200px;
+        border-radius: 14px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
 
+    /* --- Download: compact --- */
     #download {
-        min-height: 40vh;
-        padding-top: 30px;
+        min-height: auto;
+        text-align: center;
+        padding-top: 32px;
+        padding-bottom: 48px;
     }
 
     .download-text {
-        font-size: 1rem;
+        font-size: 0.95rem;
         margin-bottom: 24px;
+        padding: 0 5%;
     }
 
     .cta-large {
         padding: 16px 28px;
         font-size: 0.9rem;
+        max-width: 300px;
     }
 
-    /* Force cards visible on mobile (no scroll reveal delay) */
+    /* --- Footer --- */
+    footer {
+        padding: 28px 16px;
+    }
+
+    .footer-links {
+        gap: 24px;
+    }
+
+    .footer-links a {
+        font-size: 0.8rem;
+    }
+
+    .copyright {
+        font-size: 0.7rem;
+    }
+
+    /* --- Force all cards visible (no scroll reveal) --- */
     .feature-card,
     .rule,
     .screenshot-card {
         opacity: 1 !important;
         transform: translateY(0) !important;
     }
+}
+
+/* Hide mobile-3d-slot on desktop */
+#mobile-3d-slot {
+    display: none;
 }
