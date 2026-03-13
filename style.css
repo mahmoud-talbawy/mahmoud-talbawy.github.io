@@ -403,18 +403,29 @@ footer {
         bottom: 0;
         right: 0;
         width: 100vw;
-        height: 35vh;
-        opacity: 0.25;
+        height: 30vh;
+        opacity: 0.15;
+        z-index: 0;
     }
 
     .section {
-        padding: 60px 6%;
+        padding: 40px 6%;
         min-height: auto;
     }
 
     #hero {
-        min-height: 100vh;
-        padding-top: 20vh;
+        min-height: 85vh;
+        padding-top: 15vh;
+    }
+
+    #features,
+    #how-to-play {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .section-title {
+        margin-bottom: 28px;
     }
 
     .title-main {
@@ -425,27 +436,79 @@ footer {
         font-size: 1.6rem;
     }
 
+    .tagline {
+        margin-bottom: 28px;
+    }
+
     .cta-button {
         padding: 14px 24px;
         font-size: 0.85rem;
     }
 
-    .feature-card {
-        padding: 28px 20px;
-    }
-
-    .rule {
-        padding: 20px;
+    .features-grid {
         gap: 16px;
     }
 
+    .feature-card {
+        padding: 24px 18px;
+    }
+
+    .feature-icon {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+
+    .rules-container {
+        gap: 16px;
+    }
+
+    .rule {
+        padding: 18px;
+        gap: 14px;
+    }
+
     .rule-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .rule p {
+        font-size: 0.9rem;
     }
 
     .screenshot-card {
-        height: 240px;
+        height: 220px;
+    }
+
+    #download {
+        min-height: 40vh;
+        padding-top: 30px;
+    }
+
+    .download-text {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .cta-large {
+        padding: 16px 28px;
+        font-size: 0.9rem;
+    }
+
+    /* Force cards visible on mobile (no scroll reveal delay) */
+    .feature-card,
+    .rule,
+    .screenshot-card {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
