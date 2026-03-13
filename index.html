@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gobblet Gobblers 3D — Strategy Board Game</title>
+    <meta name="description" content="Play the classic 3x3 strategy board game in stunning 3D! Gobble up pieces, outsmart your opponent, and claim victory in Gobblet Gobblers 3D.">
+    <meta name="theme-color" content="#0a0a1a">
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Particles canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- 3D Model container (fixed, moves with scroll) -->
+    <div id="model-container">
+        <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="hero-content">
+            <h1 class="game-title">
+                <span class="title-main">GOBBLET</span>
+                <span class="title-sub">GOBBLERS</span>
+                <span class="title-3d">3D</span>
+            </h1>
+            <p class="tagline">The classic strategy board game — reimagined in stunning 3D</p>
+            <a href="https://play.google.com/store/apps/details?id=com.gobblet.gobblers3d" class="cta-button" target="_blank" rel="noopener">
+                <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                Download on Google Play
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2 class="section-title">Game Modes</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#129302;</div>
+                <h3>VS AI</h3>
+                <p>Challenge smart AI opponents across Easy, Medium, and Hard difficulty levels</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127918;</div>
+                <h3>2 Players</h3>
+                <p>Pass and play with a friend on the same device — classic couch gaming</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127760;</div>
+                <h3>Online</h3>
+                <p>Play against real opponents worldwide in Open Lobby or Private Rooms</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="how-to-play" class="section">
+        <h2 class="section-title">How to Play</h2>
+        <div class="rules-container">
+            <div class="rule">
+                <div class="rule-number">1</div>
+                <p>Each player has 6 pieces in 3 sizes — small, medium, and large</p>
+            </div>
+            <div class="rule">
+                <div class="rule-number">2</div>
+                <p>Place pieces on the 3×3 board, or <strong>gobble</strong> smaller pieces by covering them with bigger ones</p>
+            </div>
+            <div class="rule">
+                <div class="rule-number">3</div>
+                <p>Line up 3 of your pieces in a row — horizontally, vertically, or diagonally — to win!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="section">
+        <h2 class="section-title">Screenshots</h2>
+        <div class="screenshots-track">
+            <div class="screenshot-card"><img src="screenshots/gameplay.png" alt="Gameplay" loading="lazy"></div>
+            <div class="screenshot-card"><img src="screenshots/menu.png" alt="Main Menu" loading="lazy"></div>
+            <div class="screenshot-card"><img src="screenshots/store.png" alt="Store" loading="lazy"></div>
+            <div class="screenshot-card"><img src="screenshots/online.png" alt="Online Mode" loading="lazy"></div>
+            <div class="screenshot-card"><img src="screenshots/win.png" alt="Victory" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="section">
+        <div class="download-content">
+            <h2 class="section-title">Ready to Play?</h2>
+            <p class="download-text">Download Gobblet Gobblers 3D for free and start your strategy journey!</p>
+            <a href="https://play.google.com/store/apps/details?id=com.gobblet.gobblers3d" class="cta-button cta-large" target="_blank" rel="noopener">
+                <svg class="play-icon" viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                Get it on Google Play
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://mahmoud-talbawy.github.io/gobblet-privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+            <a href="https://mahmoud-talbawy.github.io/gobblet-privacy-policy/terms.html" target="_blank" rel="noopener">Terms of Service</a>
+        </div>
+        <p class="copyright">&copy; 2026 Gobblet Gobblers 3D. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
