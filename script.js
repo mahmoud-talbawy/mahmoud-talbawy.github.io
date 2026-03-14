@@ -261,11 +261,22 @@ function init3DModel() {
 
     // Scroll state
     let scrollProgress = 0;
+    let currentScrollProgress = 0;
     const getScrollMax = () => document.documentElement.scrollHeight - window.innerHeight;
 
     window.addEventListener('scroll', () => {
         scrollProgress = window.scrollY / getScrollMax();
     }, { passive: true });
+
+    // Scroll-driven transform
+    function getScrollTransform(t) {
+        return {
+            rotationY: t * Math.PI * 4,
+            rotationX: Math.sin(t * Math.PI * 2) * 0.3,
+            posY: Math.sin(t * Math.PI * 3) * 0.5,
+            scaleBase: 1 + Math.sin(t * Math.PI * 2) * 0.15
+        };
+    }
 
     // Current smooth values
     let currentRotY = 0, currentRotX = 0;
@@ -275,6 +286,10 @@ function init3DModel() {
     function animate() {
         requestAnimationFrame(animate);
         time += 0.01;
+
+        // Smooth scroll progress
+        currentScrollProgress += (scrollProgress - currentScrollProgress) * 0.05;
+        const scroll = getScrollTransform(currentScrollProgress);
 
         if (model) {
             // Auto rotation (gentle, stops if dragging)
@@ -286,15 +301,16 @@ function init3DModel() {
             currentRotY += (targetRotY - currentRotY) * 0.05;
             currentRotX += (targetRotX - currentRotX) * 0.05;
 
-            model.rotation.y = currentRotY;
-            model.rotation.x = currentRotX;
+            // Combine drag/auto rotation + scroll-driven rotation
+            model.rotation.y = currentRotY + scroll.rotationY;
+            model.rotation.x = currentRotX + scroll.rotationX;
 
-            // Float animation
-            model.position.y = Math.sin(time * 1.2) * 0.15;
+            // Float animation + scroll-driven Y offset
+            model.position.y = Math.sin(time * 1.2) * 0.15 + scroll.posY;
 
-            // Scale: gentle breathing
+            // Scale: breathing + scroll-driven scale
             const breathe = 1 + Math.sin(time * 0.8) * 0.03;
-            model.scale.setScalar(baseScale * breathe);
+            model.scale.setScalar(baseScale * breathe * scroll.scaleBase);
         }
 
         // Animate lights — orbit around model
