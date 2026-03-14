@@ -1,21 +1,17 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-// Shared state: 3D model screen position for particle interaction
-const modelScreenPos = { x: -1000, y: -1000, active: false };
-
 /* ============================================
    1. INTERACTIVE PARTICLES BACKGROUND
-   Particles attract towards mouse/touch + orbit 3D model
+   Particles attract towards mouse/touch
    ============================================ */
 function initParticles() {
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let width, height, particles;
     let mouseX = -1000, mouseY = -1000;
-    const mouseRadius = 150;
-    const modelRadius = 200;
-    let time = 0;
+    const attractRadius = 150;
+    const attractStrength = 0.02;
 
     function resize() {
         width = canvas.width = window.innerWidth;
@@ -24,44 +20,24 @@ function initParticles() {
 
     function createParticles() {
         particles = [];
-        const count = Math.floor((width * height) / 9000);
+        const count = Math.floor((width * height) / 10000);
         for (let i = 0; i < count; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
+                baseX: 0, baseY: 0,
                 size: Math.random() * 2.5 + 0.5,
                 speedX: (Math.random() - 0.5) * 0.4,
                 speedY: (Math.random() - 0.5) * 0.4,
-                opacity: Math.random() * 0.5 + 0.15,
-                color: ['#00f0ff', '#ff2d78', '#a855f7', '#00f0ff'][Math.floor(Math.random() * 4)],
-                orbitAngle: Math.random() * Math.PI * 2,
-                orbitSpeed: (Math.random() - 0.5) * 0.02
+                opacity: Math.random() * 0.6 + 0.15,
+                color: ['#00f0ff', '#ff2d78', '#a855f7', '#00f0ff'][Math.floor(Math.random() * 4)]
             });
         }
-    }
-
-    function applyAttraction(p, targetX, targetY, radius, strength) {
-        const dx = targetX - p.drawX;
-        const dy = targetY - p.drawY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < radius && dist > 1) {
-            const force = (1 - dist / radius) * strength;
-            p.drawX += dx * force;
-            p.drawY += dy * force;
-            p.drawSize = Math.max(p.drawSize, p.size * (1 + (1 - dist / radius) * 2));
-            p.drawOpacity = Math.min(1, p.drawOpacity + (1 - dist / radius) * 0.4);
-            return { dist, ratio: 1 - dist / radius };
-        }
-        return null;
+        particles.forEach(p => { p.baseX = p.x; p.baseY = p.y; });
     }
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        time += 0.01;
-
-        const mx = modelScreenPos.x;
-        const my = modelScreenPos.y - window.scrollY; // adjust for scroll
-        const modelActive = modelScreenPos.active && my > -300 && my < height + 300;
 
         for (const p of particles) {
             // Normal drift
@@ -72,91 +48,41 @@ function initParticles() {
             if (p.y < 0) p.y = height;
             if (p.y > height) p.y = 0;
 
-            // Reset draw values
-            p.drawX = p.x;
-            p.drawY = p.y;
-            p.drawSize = p.size;
-            p.drawOpacity = p.opacity;
-
             // Mouse/touch attraction
-            const mouseHit = applyAttraction(p, mouseX, mouseY, mouseRadius, 0.03);
+            const dx = mouseX - p.x;
+            const dy = mouseY - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-            // 3D Model orbit attraction
-            let modelHit = null;
-            if (modelActive) {
-                // Orbit effect: particles near model slowly circle around it
-                p.orbitAngle += p.orbitSpeed;
-                const orbitDx = mx - p.x;
-                const orbitDy = my - p.y;
-                const orbitDist = Math.sqrt(orbitDx * orbitDx + orbitDy * orbitDy);
+            let drawX = p.x;
+            let drawY = p.y;
+            let drawSize = p.size;
+            let drawOpacity = p.opacity;
 
-                if (orbitDist < modelRadius) {
-                    const ratio = 1 - orbitDist / modelRadius;
-                    // Pull towards orbit ring
-                    const targetOrbitDist = modelRadius * 0.5;
-                    const pullStrength = ratio * 0.015;
-                    p.drawX += (orbitDx / orbitDist) * (orbitDist - targetOrbitDist) * pullStrength;
-                    p.drawY += (orbitDy / orbitDist) * (orbitDist - targetOrbitDist) * pullStrength;
-                    // Tangential orbit push
-                    p.drawX += Math.cos(p.orbitAngle + time) * ratio * 2;
-                    p.drawY += Math.sin(p.orbitAngle + time) * ratio * 2;
-                    p.drawSize = p.size * (1 + ratio * 1.8);
-                    p.drawOpacity = Math.min(1, p.opacity + ratio * 0.5);
-                    modelHit = { dist: orbitDist, ratio };
-                }
+            if (dist < attractRadius) {
+                const force = (1 - dist / attractRadius) * attractStrength;
+                drawX += dx * force * 8;
+                drawY += dy * force * 8;
+                drawSize = p.size * (1 + (1 - dist / attractRadius) * 1.5);
+                drawOpacity = Math.min(1, p.opacity + (1 - dist / attractRadius) * 0.5);
             }
 
-            // Draw particle with glow effect near attractors
-            const glowActive = (mouseHit && mouseHit.ratio > 0.3) || (modelHit && modelHit.ratio > 0.3);
-            if (glowActive) {
-                ctx.beginPath();
-                ctx.arc(p.drawX, p.drawY, p.drawSize * 3, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.drawOpacity * 0.1;
-                ctx.fill();
-            }
-
-            // Main particle
+            // Draw particle
             ctx.beginPath();
-            ctx.arc(p.drawX, p.drawY, p.drawSize, 0, Math.PI * 2);
+            ctx.arc(drawX, drawY, drawSize, 0, Math.PI * 2);
             ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.drawOpacity;
+            ctx.globalAlpha = drawOpacity;
             ctx.fill();
 
-            // Connection lines to mouse
-            if (mouseHit && mouseHit.ratio > 0.2) {
+            // Draw connection lines near mouse
+            if (dist < attractRadius * 0.8) {
                 ctx.beginPath();
-                ctx.moveTo(p.drawX, p.drawY);
+                ctx.moveTo(drawX, drawY);
                 ctx.lineTo(mouseX, mouseY);
                 ctx.strokeStyle = p.color;
-                ctx.globalAlpha = mouseHit.ratio * 0.12;
+                ctx.globalAlpha = (1 - dist / attractRadius) * 0.15;
                 ctx.lineWidth = 0.5;
                 ctx.stroke();
             }
-
-            // Connection lines to model center
-            if (modelHit && modelHit.ratio > 0.4) {
-                ctx.beginPath();
-                ctx.moveTo(p.drawX, p.drawY);
-                ctx.lineTo(mx, my);
-                ctx.strokeStyle = p.color;
-                ctx.globalAlpha = modelHit.ratio * 0.08;
-                ctx.lineWidth = 0.3;
-                ctx.stroke();
-            }
-        }
-
-        // Draw model halo glow
-        if (modelActive) {
-            const gradient = ctx.createRadialGradient(mx, my, 0, mx, my, modelRadius * 0.6);
-            gradient.addColorStop(0, 'rgba(168, 85, 247, 0.06)');
-            gradient.addColorStop(0.5, 'rgba(0, 240, 255, 0.02)');
-            gradient.addColorStop(1, 'transparent');
-            ctx.globalAlpha = 1;
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(mx, my, modelRadius * 0.6, 0, Math.PI * 2);
-            ctx.fill();
         }
 
         ctx.globalAlpha = 1;
@@ -378,16 +304,6 @@ function init3DModel() {
         pinkLight.position.z = Math.sin(time * 0.4) * 3 + 2;
         purpleLight.position.x = Math.sin(time * 0.3) * 2;
         purpleLight.position.z = Math.cos(time * 0.5) * 3 - 2;
-
-        // Report model screen position to particles
-        if (model) {
-            const modelCenter = new THREE.Vector3(0, model.position.y, 0);
-            modelCenter.project(camera);
-            const rect = container.getBoundingClientRect();
-            modelScreenPos.x = rect.left + (modelCenter.x * 0.5 + 0.5) * rect.width;
-            modelScreenPos.y = rect.top + (-modelCenter.y * 0.5 + 0.5) * rect.height + window.scrollY;
-            modelScreenPos.active = true;
-        }
 
         renderer.render(scene, camera);
     }
