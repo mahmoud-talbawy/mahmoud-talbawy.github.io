@@ -1,0 +1,628 @@
+/* ============================================
+   Gobblet Gobblers 3D — Landing Page
+   Dark gaming theme with cyan/pink/purple
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cyan: #00f0ff;
+    --pink: #ff2d78;
+    --purple: #a855f7;
+    --bg-dark: #0a0a1a;
+    --bg-card: rgba(255, 255, 255, 0.04);
+    --bg-card-hover: rgba(255, 255, 255, 0.08);
+    --text: #e0e0e0;
+    --text-dim: #888;
+    --glow-cyan: 0 0 30px rgba(0, 240, 255, 0.3);
+    --glow-pink: 0 0 30px rgba(255, 45, 120, 0.3);
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ---------- Particles Background ---------- */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ---------- 3D Model Container ---------- */
+#model-container {
+    position: fixed;
+    top: 0;
+    right: -5%;
+    width: 45vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#three-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- Sections ---------- */
+.section {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 8%;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---------- Hero Section ---------- */
+#hero {
+    min-height: 100vh;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 15vh;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.game-title {
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.title-main {
+    display: block;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 900;
+    color: var(--pink);
+    text-shadow: 0 0 40px rgba(255, 45, 120, 0.5), 0 0 80px rgba(255, 45, 120, 0.2);
+    letter-spacing: 4px;
+}
+
+.title-sub {
+    display: block;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 6px;
+}
+
+.title-3d {
+    display: inline-block;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
+    padding: 4px 16px;
+    margin-top: 8px;
+    border-radius: 8px;
+    text-shadow: var(--glow-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+.tagline {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--text-dim);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* ---------- CTA Button ---------- */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--pink), #c2185b);
+    color: white;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-pink);
+    letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 50px rgba(255, 45, 120, 0.5), 0 10px 40px rgba(255, 45, 120, 0.3);
+}
+
+.cta-large {
+    padding: 20px 44px;
+    font-size: 1.1rem;
+}
+
+.play-icon {
+    flex-shrink: 0;
+}
+
+/* ---------- Features ---------- */
+#features {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-8px);
+    border-color: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(0, 240, 255, 0.03);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+/* ---------- How to Play ---------- */
+#how-to-play {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.rule {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 28px 32px;
+    transition: all 0.3s ease;
+}
+
+.rule:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(168, 85, 247, 0.2);
+}
+
+.rule-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--bg-dark);
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    border-radius: 50%;
+}
+
+.rule p {
+    font-size: 1.05rem;
+    color: var(--text);
+}
+
+.rule strong {
+    color: var(--pink);
+}
+
+/* ---------- Screenshots ---------- */
+#screenshots {
+    padding-bottom: 40px;
+}
+
+.screenshots-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.screenshots-track::-webkit-scrollbar {
+    display: none;
+}
+
+.screenshot-card {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.screenshot-card:hover {
+    transform: scale(1.03);
+}
+
+.screenshot-card img {
+    height: 100%;
+    width: auto;
+    display: block;
+}
+
+/* ---------- Download Section ---------- */
+#download {
+    text-align: center;
+    min-height: 60vh;
+}
+
+.download-text {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--cyan);
+}
+
+.copyright {
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* Hide mobile-3d-slot on desktop */
+#mobile-3d-slot {
+    display: none;
+}
+
+/* ---------- Scroll reveal animation ---------- */
+.feature-card,
+.rule,
+.screenshot-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.feature-card.visible,
+.rule.visible,
+.screenshot-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+
+/* Tablet */
+@media (max-width: 900px) {
+    #model-container {
+        width: 40vw;
+        opacity: 0.5;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* ============================================
+   MOBILE — Dedicated Design (≤ 640px)
+   ============================================ */
+@media (max-width: 640px) {
+
+    /* --- Hide fixed 3D, use inline slot instead --- */
+    #model-container {
+        display: none !important;
+    }
+
+    #mobile-3d-slot {
+        display: block;
+        width: 100%;
+        height: 280px;
+        margin: 20px 0 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+    }
+
+    /* --- Sections --- */
+    .section {
+        padding: 48px 7%;
+        min-height: auto !important;
+        justify-content: flex-start;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+    }
+
+    /* --- Hero: centered, title → 3D → tagline → CTA --- */
+    #hero {
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-title {
+        margin-bottom: 0;
+    }
+
+    .title-main {
+        font-size: 2.6rem;
+        letter-spacing: 2px;
+    }
+
+    .title-sub {
+        font-size: 1.5rem;
+        letter-spacing: 4px;
+    }
+
+    .title-3d {
+        font-size: 1rem;
+        padding: 3px 12px;
+        margin-top: 6px;
+    }
+
+    .tagline {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        padding: 0 10px;
+    }
+
+    .cta-button {
+        padding: 14px 28px;
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+        max-width: 300px;
+    }
+
+    /* --- Features: horizontal scroll cards --- */
+    #features {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #features .section-title {
+        padding: 0 7%;
+    }
+
+    .features-grid {
+        display: flex !important;
+        grid-template-columns: unset;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 0 7%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .features-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .feature-card {
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        width: 260px;
+        padding: 28px 22px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    /* --- How to Play: compact rules --- */
+    .rules-container {
+        gap: 14px;
+    }
+
+    .rule {
+        padding: 18px;
+        gap: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+    }
+
+    .rule-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+
+    .rule p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* --- Screenshots: full-width swipe --- */
+    #screenshots {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    #screenshots .section-title {
+        padding: 0 7%;
+    }
+
+    .screenshots-track {
+        padding: 10px 7%;
+        gap: 14px;
+    }
+
+    .screenshot-card {
+        height: 200px;
+        border-radius: 14px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* --- Download: compact --- */
+    #download {
+        min-height: auto;
+        text-align: center;
+        padding-top: 32px;
+        padding-bottom: 48px;
+    }
+
+    .download-text {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        padding: 0 5%;
+    }
+
+    .cta-large {
+        padding: 16px 28px;
+        font-size: 0.9rem;
+        max-width: 300px;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 28px 16px;
+    }
+
+    .footer-links {
+        gap: 24px;
+    }
+
+    .footer-links a {
+        font-size: 0.8rem;
+    }
+
+    .copyright {
+        font-size: 0.7rem;
+    }
+
+    /* --- Force all cards visible (no scroll reveal) --- */
+    .feature-card,
+    .rule,
+    .screenshot-card {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+}
+

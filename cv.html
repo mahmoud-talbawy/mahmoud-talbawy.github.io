@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud Al-Talbawy — CV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 0; }
+        body {
+            font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+            font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; background: #fff;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        .page { width: 210mm; min-height: 297mm; padding: 16mm 20mm; margin: 0 auto; background: #fff; }
+        .header { margin-bottom: 12pt; border-bottom: 2pt solid #2563eb; padding-bottom: 10pt; }
+        .header h1 { font-size: 22pt; font-weight: 700; color: #111; letter-spacing: -0.02em; margin-bottom: 2pt; }
+        .header .title { font-size: 11pt; font-weight: 600; color: #2563eb; margin-bottom: 6pt; }
+        .header .contact { display: flex; flex-wrap: wrap; gap: 4pt 14pt; font-size: 9pt; color: #444; }
+        .header .contact a { color: #2563eb; text-decoration: none; }
+        .section { margin-bottom: 10pt; }
+        .section-title {
+            font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            color: #2563eb; border-bottom: 1pt solid #e5e7eb; padding-bottom: 2pt; margin-bottom: 6pt;
+        }
+        .summary { font-size: 10pt; color: #333; line-height: 1.5; }
+        .achievements { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; margin-top: 5pt; }
+        .achievement { font-size: 9pt; color: #333; padding-left: 10pt; position: relative; line-height: 1.4; }
+        .achievement::before { content: ''; position: absolute; left: 0; top: 5pt; width: 4pt; height: 4pt; border-radius: 50%; background: #2563eb; }
+        .achievement strong { color: #111; }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 1pt 0; }
+        .skill-row { width: 100%; display: flex; margin-bottom: 1.5pt; }
+        .skill-cat { font-weight: 700; font-size: 9pt; color: #111; min-width: 90pt; }
+        .skill-val { font-size: 9pt; color: #333; }
+        .exp-item { margin-bottom: 8pt; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .exp-role { font-size: 10pt; font-weight: 700; color: #111; }
+        .exp-date { font-size: 8.5pt; color: #666; font-weight: 600; white-space: nowrap; }
+        .exp-company { font-size: 9pt; color: #555; font-weight: 500; margin-bottom: 2pt; }
+        .exp-bullets { padding-left: 14pt; }
+        .exp-bullets li { font-size: 9pt; color: #333; margin-bottom: 1.5pt; line-height: 1.4; }
+        .exp-bullets li strong { color: #111; }
+        .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt 14pt; }
+        .proj-item { margin-bottom: 2pt; }
+        .proj-name { font-weight: 700; font-size: 9.5pt; color: #111; }
+        .proj-meta { font-size: 8.5pt; color: #2563eb; font-weight: 500; }
+        .proj-desc { font-size: 8.5pt; color: #444; line-height: 1.35; }
+        .edu-item { margin-bottom: 4pt; }
+        .edu-degree { font-weight: 700; font-size: 9.5pt; }
+        .edu-school { font-size: 9pt; color: #555; }
+        .edu-date { font-size: 8.5pt; color: #888; }
+        .tags { display: flex; flex-wrap: wrap; gap: 3pt; margin-top: 3pt; }
+        .tag {
+            font-size: 7.5pt; font-weight: 600; padding: 1.5pt 6pt;
+            background: #eff6ff; color: #2563eb; border-radius: 3pt; border: 0.5pt solid #bfdbfe;
+        }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; }
+        @media print { body { background: #fff; } .page { width: 100%; padding: 14mm 16mm; } }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <div class="header">
+            <h1>Mahmoud Khairy Al-Talbawy</h1>
+            <div class="title">Flutter & Mobile Developer | Clean Architecture | AI/ML Integration | Remote (UTC+2)</div>
+            <div class="contact">
+                <a href="mailto:mahmoudkhiry74@gmail.com">mahmoudkhiry74@gmail.com</a>
+                <span>+20 102 567 9650</span>
+                <a href="https://linkedin.com/in/mahmoud-talbaway">linkedin.com/in/mahmoud-talbaway</a>
+                <a href="https://github.com/mahmoud-talbawy">github.com/mahmoud-talbawy</a>
+                <span>Egypt - Available Immediately</span>
+            </div>
+        </div>
+
+        <!-- SUMMARY — 3 lines max -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <p class="summary">
+                Flutter & Mobile Developer with <strong>3+ years</strong> of production experience shipping cross-platform apps to both major app stores. End-to-end ownership — from architecture design through backend integration to deployment and post-launch optimization. Specialized in building complex systems: <strong>real-time platforms, payment integrations, AI-powered features</strong>, and multi-language apps serving diverse markets.
+            </p>
+        </div>
+
+        <!-- KEY ACHIEVEMENTS -->
+        <div class="section">
+            <div class="section-title">Key Achievements</div>
+            <div class="achievements">
+                <div class="achievement">Shipped <strong>multiple production apps</strong> to both major app stores with full CI/CD pipeline via GitHub Actions</div>
+                <div class="achievement">Built AI computer vision app achieving <strong>94%+ accuracy</strong> with on-device inference — Excellent with Honors</div>
+                <div class="achievement">Scaled e-commerce platform to <strong>500+ vendors onboarded</strong> with live payment processing and <strong>zero transaction failures</strong> at launch</div>
+                <div class="achievement">Developed full-stack SaaS with <strong>5-level role-based auth</strong>, PDF/Excel export, and automated CI/CD deployment</div>
+            </div>
+        </div>
+
+        <!-- TECHNICAL SKILLS -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <div class="skills-grid">
+                <div class="skill-row">
+                    <span class="skill-cat">Mobile:</span>
+                    <span class="skill-val">Flutter, Dart, Cross-platform (iOS + Android), Responsive/Adaptive UI, Custom Widgets, Animations, Deep Linking, Push Notifications (FCM), Capacitor</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">Architecture:</span>
+                    <span class="skill-val">Clean Architecture, Provider, BLoC/Cubit, MVVM, SOLID, Dependency Injection (get_it), GoRouter, State Management</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">Testing:</span>
+                    <span class="skill-val">Unit Testing, Widget Testing, Integration Testing, Vitest</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">Backend:</span>
+                    <span class="skill-val">Supabase (Auth, Realtime, Edge Functions, RLS), Firebase (Firestore, Auth, FCM), Node.js/Express, Python/Flask, REST APIs, PostgreSQL, MongoDB, JWT</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">Packages:</span>
+                    <span class="skill-val">Dio, GoRouter, sqflite, shared_preferences, flutter_map, image_picker, pdf/printing, WebSockets, Google AdMob, In-App Purchases</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">AI / ML:</span>
+                    <span class="skill-val">TensorFlow, Computer Vision, On-Device ML Inference, OpenCV, Object Detection, AI-Assisted Development (Claude Code, Codex)</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">DevOps:</span>
+                    <span class="skill-val">Git, GitHub Actions (CI/CD), Docker, Linux, Playwright, App Store Connect, Google Play Console</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">Web / 3D:</span>
+                    <span class="skill-val">JavaScript (ES2022+), Three.js/WebGL, HTML5, CSS3, Vite</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-cat">Other:</span>
+                    <span class="skill-val">Agile/Scrum, Internationalization (i18n/l10n, Arabic RTL), Code Review, Performance Optimization</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-role">Flutter & Mobile Developer</span>
+                    <span class="exp-date">May 2022 - Jul 2025</span>
+                </div>
+                <div class="exp-company">GenSystems | Full-time | Remote</div>
+                <ul class="exp-bullets">
+                    <li>Shipped multiple production Flutter apps (Azeema, Relax, My Goals) to <strong>Google Play Store and App Store</strong>, serving users across Saudi Arabia and Egypt</li>
+                    <li>Architected "Azeema" - a multi-vendor catering platform for Saudi Arabia with real-time ordering, geolocation-based discovery, and delivery tracking using <strong>Supabase Realtime</strong></li>
+                    <li>Designed scalable app architecture using <strong>Clean Architecture with Provider state management</strong>, ensuring maintainability across 40+ screens</li>
+                    <li>Wrote <strong>unit tests and widget tests</strong> to prevent regressions and ensure code reliability across releases</li>
+                    <li>Integrated <strong>dual payment gateways</strong> (Moyasar, Tamara) with secure 3DS verification flows for live e-commerce transactions</li>
+                    <li>Built <strong>pixel-perfect responsive UIs</strong> with custom widgets, complex animations, and reusable component library</li>
+                    <li>Implemented <strong>Arabic RTL localization</strong> (i18n) with Cairo font across all apps</li>
+                    <li>Collaborated with cross-functional teams in <strong>Agile sprint cycles</strong>, participating in code reviews and sprint planning</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-role">Python Developer & Automation Specialist</span>
+                    <span class="exp-date">Jan 2024 - Present</span>
+                </div>
+                <div class="exp-company">Freelance | Part-time | Remote</div>
+                <ul class="exp-bullets">
+                    <li>Built custom <strong>Python web scraping tools</strong> for automated business lead extraction processing <strong>1,000+ records</strong> per campaign with <strong>98% accuracy</strong></li>
+                    <li>Integrated <strong>Google Sheets API</strong> for real-time database synchronization and automated workflow pipelines</li>
+                    <li>Achieved <strong>5x improvement</strong> in extraction speed over manual data collection through async processing</li>
+                    <li>Impact: Eliminated <strong>80% of manual research time</strong> for clients, enabling scalable outreach</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- KEY PROJECTS -->
+        <div class="section">
+            <div class="section-title">Key Projects</div>
+            <div class="proj-grid">
+                <div class="proj-item">
+                    <span class="proj-name">Azeema - Catering Platform</span>
+                    <div class="proj-meta">Flutter | Supabase | Moyasar | Tamara | Google Maps</div>
+                    <div class="proj-desc">Multi-vendor platform for Saudi Arabia. 500+ restaurants, real-time ordering, dual payment gateways, geolocation, delivery tracking. Published on Google Play and App Store.</div>
+                </div>
+                <div class="proj-item">
+                    <span class="proj-name">Landmark - Construction SaaS</span>
+                    <div class="proj-meta">Flutter | Node.js/Express | MongoDB | Docker | GitHub Actions</div>
+                    <div class="proj-desc">Full-stack SaaS for construction project management. Multi-role auth (5 levels), Dio HTTP client, GoRouter navigation, PDF/Excel export, CI/CD pipeline to GitHub Pages.</div>
+                </div>
+                <div class="proj-item">
+                    <span class="proj-name">Esharty - AI Sign Language App</span>
+                    <div class="proj-meta">Flutter | TensorFlow | Computer Vision | Supabase</div>
+                    <div class="proj-desc">Real-time sign language recognition with 94%+ accuracy. On-device TensorFlow inference, offline-capable. Graduation project - Excellent with Honors.</div>
+                </div>
+                <div class="proj-item">
+                    <span class="proj-name">Londoners - UK Social App</span>
+                    <div class="proj-meta">Flutter | Supabase | flutter_map | In-App WebView</div>
+                    <div class="proj-desc">UK property rental platform with Clean Architecture. Guesty API integration, ChargeAutomation payments with 3DS, maps, video player.</div>
+                </div>
+                <div class="proj-item">
+                    <span class="proj-name">Gobblet Gobblers 3D</span>
+                    <div class="proj-meta">Three.js | Capacitor | Supabase Realtime | AdMob | IAP</div>
+                    <div class="proj-desc">Cross-platform 3D board game. AI opponents (Minimax), real-time multiplayer via WebSockets, monetization (AdMob + IAP with HMAC-SHA256), 4 languages. Pre-launch Q2 2026.</div>
+                </div>
+                <div class="proj-item">
+                    <span class="proj-name">Automated Trading System (EGX)</span>
+                    <div class="proj-meta">Python | Playwright | Node.js | Telegram API</div>
+                    <div class="proj-desc">End-to-end automated trading for the Egyptian Exchange. Browser automation for order execution, technical analysis signals, Telegram bot alerts.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION + CERTS + ADDITIONAL -->
+        <div class="section">
+            <div class="two-col">
+                <div>
+                    <div class="section-title">Education</div>
+                    <div class="edu-item">
+                        <span class="edu-degree">Bachelor of Computer Science</span>
+                        <div class="edu-school">Higher Technological Institute (HTI), Egypt</div>
+                        <div class="edu-date">Graduated 2024 | Focus: Software Development, AI/ML, Mobile</div>
+                    </div>
+                    <div style="margin-top:6pt;">
+                        <div class="section-title">Certifications</div>
+                        <div class="edu-item">
+                            <span class="edu-degree">AI, Machine Learning & DSP</span>
+                            <div class="edu-school">Electronics Research Institute - 120 hours</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="section-title">Additional</div>
+                    <div class="skill-row"><span class="skill-cat">Languages:</span><span class="skill-val">Arabic (Native), English (Professional)</span></div>
+                    <div class="skill-row"><span class="skill-cat">Availability:</span><span class="skill-val">Immediate | Remote</span></div>
+                    <div class="skill-row"><span class="skill-cat">Work Type:</span><span class="skill-val">Full-time or Contract</span></div>
+                    <div class="skill-row"><span class="skill-cat">Time Zones:</span><span class="skill-val">UTC+2 (US/EU overlap)</span></div>
+                    <div class="skill-row"><span class="skill-cat">Platforms:</span><span class="skill-val">iOS + Android deployment</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ATS TAGS -->
+        <div class="section">
+            <div class="section-title">Core Competencies</div>
+            <div class="tags">
+                <span class="tag">Flutter</span>
+                <span class="tag">Dart</span>
+                <span class="tag">Mobile Development</span>
+                <span class="tag">iOS</span>
+                <span class="tag">Android</span>
+                <span class="tag">Clean Architecture</span>
+                <span class="tag">State Management</span>
+                <span class="tag">BLoC</span>
+                <span class="tag">Provider</span>
+                <span class="tag">Unit Testing</span>
+                <span class="tag">Widget Testing</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">REST APIs</span>
+                <span class="tag">Dio</span>
+                <span class="tag">GoRouter</span>
+                <span class="tag">Python</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Git</span>
+                <span class="tag">SOLID</span>
+                <span class="tag">Agile</span>
+                <span class="tag">Google Play</span>
+                <span class="tag">App Store</span>
+                <span class="tag">Code Review</span>
+                <span class="tag">i18n</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

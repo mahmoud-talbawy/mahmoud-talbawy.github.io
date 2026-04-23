@@ -1,123 +1,448 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gobblet Gobblers 3D — Strategy Board Game</title>
-    <meta name="description" content="Play the classic 3x3 strategy board game in stunning 3D! Gobble up pieces, outsmart your opponent, and claim victory in Gobblet Gobblers 3D.">
-    <meta name="theme-color" content="#0a0a1a">
+    <title>Mahmoud Al-Talbawy — Flutter & Mobile Developer</title>
+    <meta name="description" content="Flutter & Mobile Developer specializing in production mobile apps, AI/ML integration, and 3D web experiences.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph / LinkedIn / WhatsApp / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="mahmoud.dev">
+    <meta property="og:title" content="Mahmoud Al-Talbawy — Flutter & Mobile Developer">
+    <meta property="og:description" content="Building production apps used by thousands across the Middle East. Flutter, backend, AI, 3D — complete solutions.">
+    <meta property="og:url" content="https://mahmoud-talbawy.github.io/">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mahmoud Al-Talbawy — Flutter & Mobile Developer">
+    <meta name="twitter:description" content="Building production apps used by thousands across the Middle East. Flutter, backend, AI, 3D — complete solutions.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Three.js -->
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-        }
-    }
-    </script>
 </head>
 <body>
-    <!-- Particles canvas -->
-    <canvas id="particles"></canvas>
+    <!-- Grain overlay -->
+    <div class="grain"></div>
+    <!-- Gradient mesh bg -->
+    <div class="mesh-bg"></div>
 
-    <!-- 3D Model container (fixed, moves with scroll) -->
-    <div id="model-container">
-        <canvas id="three-canvas"></canvas>
-    </div>
+    <!-- Nav -->
+    <nav class="nav">
+        <a href="#" class="logo">mahmoud<span>.dev</span></a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                <div class="theme-btn__track">
+                    <div class="theme-btn__thumb"></div>
+                </div>
+            </button>
+            <a href="mailto:mahmoudkhiry74@gmail.com" class="nav-cta">Let's Talk</a>
+        </div>
+    </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="section">
-        <div class="hero-content">
-            <h1 class="game-title">
-                <span class="title-main">GOBBLET</span>
-                <span class="title-sub">GOBBLERS</span>
-                <span class="title-3d">3D</span>
-            </h1>
-            <!-- Mobile inline 3D viewer -->
-            <div id="mobile-3d-slot"></div>
-            <p class="tagline">The classic strategy board game — reimagined in stunning 3D</p>
-            <a href="https://play.google.com/store/apps/details?id=com.gobblet.gobblers3d" class="cta-button" target="_blank" rel="noopener">
-                <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                Download on Google Play
+    <!-- Hero Bento -->
+    <section class="hero-bento">
+        <div class="bento-grid bento-grid--hero">
+            <!-- Main intro card -->
+            <div class="bento-card bento-card--main" data-animate>
+                <div class="bento-card__badge">Available for work</div>
+                <h1 class="hero-title">
+                    <span class="hero-title__hi">I'm Mahmoud,</span>
+                    <span class="hero-title__role">Flutter &<br>Mobile Developer</span>
+                </h1>
+                <p class="hero-desc">Building production apps used by thousands across the Middle East. From architecture to AI — I ship complete solutions.</p>
+                <div class="hero-ctas">
+                    <a href="#work" class="pill-btn pill-btn--accent">View Projects</a>
+                    <a href="#contact" class="pill-btn pill-btn--ghost">Contact Me</a>
+                    <a href="Mahmoud_Al-Talbawy_CV_FINAL.pdf" download class="pill-btn pill-btn--ghost">Download CV</a>
+                </div>
+            </div>
+
+            <!-- Stats card -->
+            <div class="bento-card bento-card--stats" data-animate data-delay="100">
+                <div class="stat-item">
+                    <span class="stat-num">4+</span>
+                    <span class="stat-label">Production<br>Apps</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">94%</span>
+                    <span class="stat-label">AI Model<br>Accuracy</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Vendors<br>Connected</span>
+                </div>
+            </div>
+
+            <!-- 3D Canvas card -->
+            <div class="bento-card bento-card--3d" data-animate data-delay="150">
+                <canvas id="threeBg"></canvas>
+                <div class="bento-card__overlay">
+                    <span class="bento-card__overlay-text">Three.js</span>
+                </div>
+            </div>
+
+            <!-- Code snippet card -->
+            <div class="bento-card bento-card--code" data-animate data-delay="200">
+                <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span class="code-filename">mahmoud.dart</span>
+                </div>
+                <pre class="code-body"><code><span class="ck">class</span> <span class="cc">Mahmoud</span> {
+  <span class="ck">final</span> role = <span class="cs">'Mobile Dev'</span>;
+  <span class="ck">final</span> stack = [
+    <span class="cs">'Flutter'</span>,
+    <span class="cs">'Supabase'</span>,
+    <span class="cs">'TensorFlow'</span>,
+    <span class="cs">'Three.js'</span>,
+  ];
+  <span class="ct">bool</span> <span class="cm">get</span> hired => <span class="ck">true</span>;
+}</code></pre>
+            </div>
+
+            <!-- Location card -->
+            <div class="bento-card bento-card--location" data-animate data-delay="250">
+                <div class="location-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div>
+                    <strong>Egypt (UTC+2)</strong>
+                    <span class="location-sub">US/EU timezone overlap</span>
+                </div>
+            </div>
+
+            <!-- Social links card -->
+            <div class="bento-card bento-card--social" data-animate data-delay="300">
+                <a href="https://github.com/mahmoud-talbawy" target="_blank" class="social-link" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/mahmoud-talbaway/" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.47 2H3.53A1.45 1.45 0 0 0 2 3.47v17.06A1.45 1.45 0 0 0 3.47 22h17.06A1.45 1.45 0 0 0 22 20.53V3.47A1.45 1.45 0 0 0 20.47 2zM8.09 18.74h-3v-9h3v9zM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 0 1 0 3.12zM18.91 18.74h-3v-4.26c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.18-1.73 2.39v4.34h-3v-9h2.89v1.17h.04a3.17 3.17 0 0 1 2.85-1.56c3.05 0 3.61 2 3.61 4.61v4.78z"/></svg>
+                </a>
+                <a href="mailto:mahmoudkhiry74@gmail.com" class="social-link" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </a>
+                <a href="tel:+201025679650" class="social-link" aria-label="Phone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Bento -->
+    <section class="section" id="skills">
+        <div class="section-label" data-animate>
+            <span class="section-label__num">01</span>
+            <span class="section-label__text">Tech Stack</span>
+        </div>
+        <div class="bento-grid bento-grid--skills">
+            <div class="bento-card bento-card--skill bento-card--skill-main" data-animate>
+                <div class="skill-icon skill-icon--flutter">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.314 0L2.3 12 6.13 15.83 22.16 0H14.314zM14.314 11.147L8.96 16.5 14.314 21.854H22.16L16.804 16.5 22.16 11.147H14.314z"/></svg>
+                </div>
+                <h3>Flutter & Dart</h3>
+                <p>Primary stack. 4+ production apps shipped. Cross-platform iOS/Android with clean architecture.</p>
+                <div class="skill-tags">
+                    <span>Flutter</span><span>Dart</span><span>FlutterFlow</span><span>Widgets</span><span>State Mgmt</span>
+                </div>
+            </div>
+            <div class="bento-card bento-card--skill" data-animate data-delay="100">
+                <div class="skill-icon skill-icon--backend">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                </div>
+                <h3>Backend</h3>
+                <p>Supabase, Firebase, Node.js, Flask. Auth, realtime, edge functions.</p>
+                <div class="skill-tags">
+                    <span>Supabase</span><span>Firebase</span><span>Node.js</span><span>Python</span><span>PostgreSQL</span>
+                </div>
+            </div>
+            <div class="bento-card bento-card--skill" data-animate data-delay="200">
+                <div class="skill-icon skill-icon--ai">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3>AI / ML</h3>
+                <p>TensorFlow, Computer Vision, on-device inference. 94%+ accuracy in production.</p>
+                <div class="skill-tags">
+                    <span>TensorFlow</span><span>OpenCV</span><span>On-Device ML</span>
+                </div>
+            </div>
+            <div class="bento-card bento-card--skill" data-animate data-delay="300">
+                <div class="skill-icon skill-icon--web">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+                </div>
+                <h3>Web & 3D</h3>
+                <p>JavaScript, Three.js, WebGL. Interactive 3D experiences and games.</p>
+                <div class="skill-tags">
+                    <span>JavaScript</span><span>Three.js</span><span>WebGL</span><span>HTML/CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="work">
+        <div class="section-label" data-animate>
+            <span class="section-label__num">02</span>
+            <span class="section-label__text">Selected Work</span>
+        </div>
+        <div class="bento-grid bento-grid--projects">
+            <!-- Azeema -->
+            <div class="bento-card bento-card--project bento-card--project-wide" data-animate>
+                <div class="project-mockup project-mockup--azeema">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="app-header" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                                <span style="font-weight:700;color:#fff;font-size:14px;">Azeema</span>
+                                <span style="color:rgba(255,255,255,.8);font-size:11px;">500+ Restaurants</span>
+                            </div>
+                            <div class="app-cards">
+                                <div class="app-card-mini"></div>
+                                <div class="app-card-mini"></div>
+                            </div>
+                            <div class="app-nav-bar"><span></span><span></span><span></span><span class="active"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">Flutter + Supabase</span>
+                    <h3>Azeema Platform</h3>
+                    <p>Multi-vendor catering for Saudi Arabia. 500+ restaurants, real-time ordering, geolocation, dual payment gateways (Moyasar, Tamara), delivery tracking.</p>
+                    <div class="project-tech">
+                        <span>Flutter</span><span>Supabase</span><span>Payment APIs</span><span>Maps</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Esharty -->
+            <div class="bento-card bento-card--project" data-animate data-delay="100">
+                <div class="project-mockup project-mockup--esharty">
+                    <div class="ai-scan-ring"></div>
+                    <div class="ai-hand">&#x1F91F;</div>
+                    <div class="ai-result">
+                        <span class="ai-confidence">94%</span>
+                        <span class="ai-label">Detected</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">AI / Computer Vision</span>
+                    <h3>Esharty</h3>
+                    <p>Sign language recognition with on-device TensorFlow. 94%+ accuracy, works offline.</p>
+                    <div class="project-tech">
+                        <span>TensorFlow</span><span>Flutter</span><span>CV</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freely VPN -->
+            <div class="bento-card bento-card--project" data-animate data-delay="150">
+                <div class="project-mockup project-mockup--freely">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen" style="background:linear-gradient(160deg,#0b1120,#1e1b4b);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:radial-gradient(circle,#10b981,#059669);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(16,185,129,.55);">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4v6c0 5.5-3.8 10.2-9 12-5.2-1.8-9-6.5-9-12V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                            </div>
+                            <span style="color:#10b981;font-size:9px;font-weight:700;letter-spacing:.15em;">CONNECTED</span>
+                            <span style="color:#e2e8f0;font-size:8px;opacity:.7;">XRay REALITY · 44 ms</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">Flutter + Node.js</span>
+                    <h3>Freely VPN</h3>
+                    <p>Published VPN app. XRay REALITY + WireGuard tunnels, AdMob rewarded sessions, pinned TLS, Fastify backend on a VPS. Live on Google Play.</p>
+                    <div class="project-tech">
+                        <span>Flutter</span><span>XRay</span><span>WireGuard</span><span>Fastify</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quran Train -->
+            <div class="bento-card bento-card--project" data-animate data-delay="200">
+                <div class="project-mockup project-mockup--quran">
+                    <div class="game-scene">
+                        <div class="game-sky"></div>
+                        <div class="game-ground"></div>
+                        <div class="game-train">&#x1F682;</div>
+                        <div class="game-station">&#x1F54C;</div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">Three.js / Education</span>
+                    <h3>Quran Train</h3>
+                    <p>3D educational game for kids. Custom shaders, GLTF models, procedural environments.</p>
+                    <div class="project-tech">
+                        <span>Three.js</span><span>WebGL</span><span>Supabase</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trading -->
+            <div class="bento-card bento-card--project bento-card--project-terminal" data-animate data-delay="150">
+                <div class="project-mockup project-mockup--trading">
+                    <div class="terminal">
+                        <div class="terminal-bar"><span></span><span></span><span></span></div>
+                        <div class="terminal-body">
+                            <div class="tl"><span class="tg">$</span> scan --market EGX</div>
+                            <div class="tl"><span class="ty">></span> Signal: BUY COMI.CA</div>
+                            <div class="tl"><span class="ty">></span> Entry: 42.50 EGP</div>
+                            <div class="tl"><span class="tg">&#10003;</span> Order placed via Thndr</div>
+                            <div class="tl"><span class="tb">@</span> Telegram: Alert sent</div>
+                            <div class="tl tl--blink"><span class="tg">$</span> _</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">Automation / FinTech</span>
+                    <h3>EGX Trading Bot</h3>
+                    <p>Automated trading for Egyptian Exchange. Playwright automation, technical analysis, Telegram alerts.</p>
+                    <div class="project-tech">
+                        <span>Python</span><span>Playwright</span><span>Telegram</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relax -->
+            <div class="bento-card bento-card--project bento-card--project-relax" data-animate data-delay="250">
+                <div class="project-mockup project-mockup--relax">
+                    <div class="relax-orb"></div>
+                    <div class="relax-moods">
+                        <span>&#x1F60A;</span><span>&#x1F614;</span><span>&#x1F634;</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">AI / Wellness</span>
+                    <h3>Relax App</h3>
+                    <p>AI-powered mood analysis, personalized recommendations, medication management.</p>
+                    <div class="project-tech">
+                        <span>Flutter</span><span>Flask</span><span>AI/ML</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gobblet Gobblers 3D -->
+            <a href="Gobblet-Gobblers-3D/" class="bento-card bento-card--project" data-animate data-delay="300" style="text-decoration:none;color:inherit;">
+                <div class="project-mockup project-mockup--gobblet" style="min-height:200px;display:flex;align-items:center;justify-content:center;perspective:500px;">
+                    <div style="display:grid;grid-template-columns:repeat(3,30px);grid-template-rows:repeat(3,30px);gap:6px;transform:rotateX(55deg) rotateZ(-25deg);transform-style:preserve-3d;">
+                        <div style="background:linear-gradient(145deg,#f8fafc,#cbd5e1);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                        <div style="background:linear-gradient(145deg,#475569,#1e293b);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);position:relative;"><span style="position:absolute;inset:5px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fde68a,#f59e0b);box-shadow:0 2px 4px rgba(0,0,0,.35);"></span></div>
+                        <div style="background:linear-gradient(145deg,#f8fafc,#cbd5e1);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                        <div style="background:linear-gradient(145deg,#475569,#1e293b);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                        <div style="background:linear-gradient(145deg,#f8fafc,#cbd5e1);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);position:relative;"><span style="position:absolute;inset:5px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fca5a5,#b91c1c);box-shadow:0 2px 4px rgba(0,0,0,.35);"></span></div>
+                        <div style="background:linear-gradient(145deg,#475569,#1e293b);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                        <div style="background:linear-gradient(145deg,#f8fafc,#cbd5e1);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                        <div style="background:linear-gradient(145deg,#475569,#1e293b);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                        <div style="background:linear-gradient(145deg,#f8fafc,#cbd5e1);border-radius:5px;box-shadow:0 3px 6px rgba(0,0,0,.25);"></div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag">Three.js / 3D Game</span>
+                    <h3>Gobblet Gobblers 3D <span style="opacity:.55;font-weight:400;">↗</span></h3>
+                    <p>Interactive 3D strategy board game. Custom shaders, GLTF models, Supabase-backed multiplayer. Visit the landing page.</p>
+                    <div class="project-tech">
+                        <span>Three.js</span><span>WebGL</span><span>Supabase</span>
+                    </div>
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="section">
-        <h2 class="section-title">Game Modes</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">&#129302;</div>
-                <h3>VS AI</h3>
-                <p>Challenge smart AI opponents across Easy, Medium, and Hard difficulty levels</p>
+    <!-- Experience -->
+    <section class="section" id="about">
+        <div class="section-label" data-animate>
+            <span class="section-label__num">03</span>
+            <span class="section-label__text">Journey</span>
+        </div>
+        <div class="bento-grid bento-grid--experience">
+            <div class="bento-card bento-card--exp" data-animate>
+                <div class="exp-year">2025</div>
+                <h3>Full-Stack & Game Dev</h3>
+                <span class="exp-company">Self-Employed</span>
+                <p>3D educational games with Three.js, automated trading systems, Supabase platforms.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#127918;</div>
-                <h3>2 Players</h3>
-                <p>Pass and play with a friend on the same device — classic couch gaming</p>
+            <div class="bento-card bento-card--exp" data-animate data-delay="100">
+                <div class="exp-year">2024</div>
+                <h3>Python & Automation</h3>
+                <span class="exp-company">Freelance</span>
+                <p>Web scraping tools processing 1,000+ leads at 98% accuracy. Google Sheets API integration.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#127760;</div>
-                <h3>Online</h3>
-                <p>Play against real opponents worldwide in Open Lobby or Private Rooms</p>
+            <div class="bento-card bento-card--exp bento-card--exp-main" data-animate data-delay="200">
+                <div class="exp-year">2022 — 2025</div>
+                <h3>Flutter & Mobile Developer</h3>
+                <span class="exp-company">GenSystems</span>
+                <p>Shipped 4+ production apps. Built Azeema platform (500+ restaurants). Payment gateways, geolocation, Agile sprints.</p>
+            </div>
+            <div class="bento-card bento-card--exp" data-animate data-delay="300">
+                <div class="exp-year">2024</div>
+                <h3>AI & Computer Vision</h3>
+                <span class="exp-company">HTI — Graduation</span>
+                <p>Sign language recognition. TensorFlow, 94%+ accuracy. On-device ML inference. Excellent grade with Honors.</p>
+            </div>
+            <div class="bento-card bento-card--exp" data-animate data-delay="350">
+                <div class="exp-year">2018 — 2024</div>
+                <h3>B.Sc. Computer Science</h3>
+                <span class="exp-company">HTI</span>
+                <p>Software Development, AI/ML, Mobile Development, Network Systems.</p>
             </div>
         </div>
     </section>
 
-    <!-- How to Play Section -->
-    <section id="how-to-play" class="section">
-        <h2 class="section-title">How to Play</h2>
-        <div class="rules-container">
-            <div class="rule">
-                <div class="rule-number">1</div>
-                <p>Each player has 6 pieces in 3 sizes — small, medium, and large</p>
-            </div>
-            <div class="rule">
-                <div class="rule-number">2</div>
-                <p>Place pieces on the 3×3 board, or <strong>gobble</strong> smaller pieces by covering them with bigger ones</p>
-            </div>
-            <div class="rule">
-                <div class="rule-number">3</div>
-                <p>Line up 3 of your pieces in a row — horizontally, vertically, or diagonally — to win!</p>
-            </div>
+    <!-- Contact -->
+    <section class="section section--contact" id="contact">
+        <div class="section-label" data-animate>
+            <span class="section-label__num">04</span>
+            <span class="section-label__text">Get In Touch</span>
         </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="section">
-        <h2 class="section-title">Screenshots</h2>
-        <div class="screenshots-track">
-            <div class="screenshot-card"><img src="screenshots/gameplay.png" alt="Gameplay" loading="lazy"></div>
-            <div class="screenshot-card"><img src="screenshots/menu.png" alt="Main Menu" loading="lazy"></div>
-            <div class="screenshot-card"><img src="screenshots/store.png" alt="Store" loading="lazy"></div>
-            <div class="screenshot-card"><img src="screenshots/online.png" alt="Online Mode" loading="lazy"></div>
-            <div class="screenshot-card"><img src="screenshots/win.png" alt="Victory" loading="lazy"></div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section id="download" class="section">
-        <div class="download-content">
-            <h2 class="section-title">Ready to Play?</h2>
-            <p class="download-text">Download Gobblet Gobblers 3D for free and start your strategy journey!</p>
-            <a href="https://play.google.com/store/apps/details?id=com.gobblet.gobblers3d" class="cta-button cta-large" target="_blank" rel="noopener">
-                <svg class="play-icon" viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                Get it on Google Play
-            </a>
+        <div class="bento-grid bento-grid--contact">
+            <div class="bento-card bento-card--contact-main" data-animate>
+                <h2 class="contact-title">Let's build<br>something <em>great</em></h2>
+                <p>Currently open to remote opportunities — full-time or contract. Flutter, backend, AI, 3D — I do it all.</p>
+                <a href="mailto:mahmoudkhiry74@gmail.com" class="pill-btn pill-btn--accent pill-btn--large">
+                    mahmoudkhiry74@gmail.com
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+            <div class="bento-card bento-card--contact-links" data-animate data-delay="100">
+                <a href="https://www.linkedin.com/in/mahmoud-talbaway/" target="_blank" class="contact-link-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.47 2H3.53A1.45 1.45 0 0 0 2 3.47v17.06A1.45 1.45 0 0 0 3.47 22h17.06A1.45 1.45 0 0 0 22 20.53V3.47A1.45 1.45 0 0 0 20.47 2zM8.09 18.74h-3v-9h3v9zM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 0 1 0 3.12zM18.91 18.74h-3v-4.26c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.18-1.73 2.39v4.34h-3v-9h2.89v1.17h.04a3.17 3.17 0 0 1 2.85-1.56c3.05 0 3.61 2 3.61 4.61v4.78z"/></svg>
+                    <span>LinkedIn</span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="https://github.com/mahmoud-talbawy" target="_blank" class="contact-link-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+                <a href="tel:+201025679650" class="contact-link-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>+20 102 567 9650</span>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="https://mahmoud-talbawy.github.io/gobblet-privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
-            <a href="https://mahmoud-talbawy.github.io/gobblet-privacy-policy/terms.html" target="_blank" rel="noopener">Terms of Service</a>
-        </div>
-        <p class="copyright">&copy; 2026 Gobblet Gobblers 3D. All rights reserved.</p>
+    <footer class="footer">
+        <span>Designed & Built by <strong>Mahmoud Al-Talbawy</strong></span>
+        <span>&copy; 2026</span>
     </footer>
 
+    <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.169.0/build/three.module.js"}}</script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
