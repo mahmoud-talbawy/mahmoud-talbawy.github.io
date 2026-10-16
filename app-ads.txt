@@ -164,6 +164,7 @@ xandr.com, 7353, RESELLER
 zetaglobal.net, 525, RESELLER
 zmaticoo.com, 5135195, RESELLER
 # Equativ + OneTag (AdMob bidding partners, 2026-10-16)
+smartadserver.com, 4194, DIRECT
 smartadserver.com, 4194-OB, RESELLER, 060d053dcf45cbf3
 smartadserver.com, 4194, RESELLER, 060d053dcf45cbf3
 onetag.com, 98342953ade0336, DIRECT
