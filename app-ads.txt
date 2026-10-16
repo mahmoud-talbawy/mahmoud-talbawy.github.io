@@ -173,3 +173,5 @@ pubmatic.com, 161593, RESELLER, 5d62403b186f2ace
 rubiconproject.com, 11006, RESELLER, 0bfd66d529a55807
 video.unrulymedia.com, 586616193, RESELLER
 smartadserver.com, 4111, RESELLER
+# Magnite DV+ (AdMob bidding partner, 2026-10-16)
+rubiconproject.com, 22884, DIRECT, 0bfd66d529a55807
