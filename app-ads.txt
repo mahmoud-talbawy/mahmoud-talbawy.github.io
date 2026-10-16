@@ -175,3 +175,6 @@ video.unrulymedia.com, 586616193, RESELLER
 smartadserver.com, 4111, RESELLER
 # Magnite DV+ (AdMob bidding partner, 2026-10-16)
 rubiconproject.com, 22884, DIRECT, 0bfd66d529a55807
+# Liftoff Monetize + BIGO Ads (SDK bidding partners, 2026-10-16)
+vungle.com, 6ad1b58156c1b4e3f258d4df, DIRECT, c107d686becd2d77
+bigo.sg,cwho18w433,DIRECT
