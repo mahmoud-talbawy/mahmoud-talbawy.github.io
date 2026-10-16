@@ -181,3 +181,5 @@ vungle.com, 6ad1b58156c1b4e3f258d4df, DIRECT, c107d686becd2d77
 bigo.sg,cwho18w433,DIRECT
 # InMobi (SDK + Exchange, 2026-10-16)
 inmobi.com, 60daaa9504b0461da6459cae2e5e4f02, DIRECT, 83e75a7ae333ca9d
+# PubMatic (Open Bidding, approved 2026-10-16)
+pubmatic.com, 159856, DIRECT, 5d62403b186f2ace
