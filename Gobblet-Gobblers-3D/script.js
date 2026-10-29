@@ -180,7 +180,7 @@ function init3DModel() {
     let baseScale = 1;
     const loader = new GLTFLoader();
 
-    loader.load('red-monster.glb', (gltf) => {
+    loader.load('red-monster-v3.glb', (gltf) => {
         model = gltf.scene;
 
         const box = new THREE.Box3().setFromObject(model);
